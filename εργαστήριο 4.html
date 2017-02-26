@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Υπολογισμός Βαθμών</title>
+	<script>
+		function checkValues(math1, math2, math3, math4, math5, math6)
+		{
+			flag = true;
+			//ελεγχος if στα πεδια(6 if για 6 πεδια)
+			//ελεγχος για το αν ειναι γραμματα/κενο η αριθμος
+			if (isNaN(document.getElementById("math1").value) ||
+				document.getElementById("math1").value == "" ||
+				//ελεγχος για το αν ειναι μικροτερος του 0
+				document.getElementById("math1").value < 0 ||
+				//ελεγχος για το αν ειναι μεγαλυτερος του 10
+				document.getElementById("math1").value > 10) {
+				//αν κατι δεν ειναι σωστο να κοκκινιστει
+				document.getElementById("math1").style.borderColor = "red";
+				flag = false;
+			} else {
+			document.getElementById("math1").style.borderColor = "";
+			}
+
+			if (isNaN(document.getElementById("math2").value) ||
+				document.getElementById("math2").value == "" ||
+				document.getElementById("math2").value < 0 ||
+				document.getElementById("math2").value > 10) {
+				document.getElementById("math2").style.borderColor = "red";
+				flag = false;
+			} else {
+				document.getElementById("math2").style.borderColor = "";
+			}
+
+			if (isNaN(document.getElementById("math3").value) ||
+				document.getElementById("math3").value == "" ||
+				document.getElementById("math3").value < 0 ||
+				document.getElementById("math3").value > 10) {
+				document.getElementById("math3").style.borderColor = "red";
+				flag = false;
+			} else {
+				document.getElementById("math3").style.borderColor = "";
+			}
+
+			if (isNaN(document.getElementById("math4").value) ||
+				document.getElementById("math4").value == "" ||
+				document.getElementById("math4").value < 0 ||
+				document.getElementById("math4").value > 10) {
+				document.getElementById("math4").style.borderColor = "red";
+				flag = false;
+			} else {
+				document.getElementById("math4").style.borderColor = "";
+			}
+
+			if (isNaN(document.getElementById("math5").value) ||
+				document.getElementById("math5").value == "" ||
+				document.getElementById("math5").value < 0 ||
+				document.getElementById("math5").value > 10) {
+				document.getElementById("math5").style.borderColor = "red";
+				flag = false;
+			} else {
+				document.getElementById("math5").style.borderColor = "";
+			}
+
+			if (isNaN(document.getElementById("math6").value) ||
+				document.getElementById("math6").value == "" ||
+				document.getElementById("math6").value < 0 ||
+				document.getElementById("math6").value > 10) {
+				document.getElementById("math6").style.borderColor = "red";
+				flag = false;
+			} else {
+				document.getElementById("math6").style.borderColor = "";
+			}
+			
+			if (isNaN(document.getElementById("onoma").value)) {
+				document.getElementById("onoma").style.borderColor = "";
+			} else {
+				document.getElementById("onoma").style.borderColor = "red";
+			}
+			
+			if (isNaN(document.getElementById("epitheto").value)) {
+				document.getElementById("epitheto").style.borderColor = "";
+			} else {
+				document.getElementById("epitheto").style.borderColor = "red";
+			}
+			
+			// if για το αν ολα τα πεδια ειναι σωστα
+			if (flag==true) {
+				var sum = parseInt(document.getElementById("math1").value) + parseInt(document.getElementById("math2").value) + parseInt(document.getElementById("math3").value) +
+						  parseInt(document.getElementById("math4").value) + parseInt(document.getElementById("math5").value) + parseInt(document.getElementById("math6").value);
+
+				var mo = sum / 6;
+				//ελεγχος του μεσου ορου για την τιμη του
+				if (mo < 5) {
+					alert("ουπςςς κόπηκες\n μέσος όρος: " + mo.toLocaleString('el-GR', {minimumFractionDigits: 1}));
+				} else if (mo <= 6.49) {
+					alert("καλώς\n μέσος όρος: " + mo.toLocaleString('el-GR', {minimumFractionDigits: 1}));
+				} else if (mo <= 8.49) {
+					alert("Λίαν καλώς\n μέσος όρος: " + mo.toLocaleString('el-GR', {minimumFractionDigits: 1}));
+				} else {
+					alert("Άριστα\n μέσος όρος: " + mo.toLocaleString('el-GR', {minimumFractionDigits: 1}));
+				}				
+			
+			// αλλιως να εμφανιζει καταλληλο μυνημα
+			} else {
+				alert("Παρουσιάστηκαν λάθη στην εισαγωγή των στοιχείων\n- Μόνο αριθμοί από 0 μέχρι 10 (στους βαθμούς μαθημάτων)\n- Μόνο χαρακτήρες (στην εισαγωγή ονοματεπωνύμου)");
+			}
+		}
+	</script>
+	<script>
+            var nWindow;
+            function newWindow(onoma, epitheto, am)
+            {
+				nWindow = window.open("", "MsgWindow", "width=800, height=350");
+				nWindow.document.write(" Όνομα: " + onoma + " | ");
+				nWindow.document.write(" Επίθετο: " + epitheto + " | ");
+				nWindow.document.write(" Αριθμός Μητρώου: " + am);
+            }
+            function closenWindow()
+            {
+				nWindow.close();
+            }
+        </script>
+	</head>
+<h1 style="font-family:verdana; text-align:center;"><em> ΕΙΣΑΓΩΓΗ ΒΑΘΜΩΝ</em></h1>
+  <body style="background-color:#C27100;">
+    <form id="my-form" style="text-align:center;">
+	<table style="background-color:#FFFFFF;" align="center" width="44%"; border=8; style="margin-bottom:20px">
+	<td>
+      <label for="Μάθημα 1" style="font-family:verdana;">Μάθημα 1:</label>
+      <input id="math1" type="text" name="math1" maxlength="2">
+    </td>
+	<td>
+      <label for="Μάθημα 2" style="font-family:verdana;">Μάθημα 2:</label>
+      <input id="math2" type="text" name="math2" maxlength="2">
+	</td>
+	<td>
+      <label for="Μάθημα 3" style="font-family:verdana;">Μάθημα 3:</label>
+      <input id="math3" type="text" name="math3" maxlength="2">
+	</td>
+	<td>
+      <label for="Μάθημα 4" style="font-family:verdana;">Μάθημα 4:</label>
+      <input id="math4" type="text" name="math4" maxlength="2">
+	</td>
+	<td>
+      <label for="Μάθημα 5" style="font-family:verdana;">Μάθημα 5:</label>
+      <input id="math5" type="text" name="math5" maxlength="2">
+	</td>
+	<td>
+      <label for="Μάθημα 6" style="font-family:verdana;">Μάθημα 6:</label>
+      <input id="math6" type="text" name="math6" maxlength="2">
+	</td>
+	  </table>
+	  <br>
+<h1 style="font-family:verdana;"><em> ΣΤΟΙΧΕΙΑ ΦΟΙΤΗΤΗ</em></h1>
+	  Αριθμός Μητρώου:
+      <input type="text" maxlength="6" style="font-family:verdana;" id="am" name="am" placeholder="Πxxxxx (π.χ. Π16988)">
+	  <br>
+      <br>
+	  Όνομα:
+      <input type="text" style="font-family:verdana;" id="onoma" name="onoma" placeholder="Όνομα φοιτητή">
+      <br>
+      <br>
+	  Επίθετο:
+      <input type="text" style="font-family:verdana;" id="epitheto" name="epitheto" placeholder="Επίθετο φοιτητή">
+      <br>
+      <br>
+      Εξάμηνο: <select name="eksamino" style="font-family:verdana;">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+		<option>6</option>
+		<option>7</option>
+		<option>8</option>
+		</select>
+      <br>
+      <br>
+      <br>
+      <input type="button" value="Υπολογισμός" onClick="checkValues(form.math1.value, form.math2.value, form.math3.value, form.math4.value, form.math5.value, form.math6.value)">
+	  <input type="button" value="Στοιχεία φοιτητή" onClick="newWindow(form.onoma.value, form.epitheto.value, form.am.value)">
+      <input type="reset" value="Ακύρωση">
+	  <input type="button" value="Κλείσιμο πρόσθετου παραθύρου" onclick="closenWindow()">
+    </form>
+	</body>
+</html>
